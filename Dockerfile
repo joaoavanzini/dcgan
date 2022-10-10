@@ -4,6 +4,7 @@ USER root
 WORKDIR /usr/app/src
 COPY model.py ./
 COPY train.py ./
+COPY celeb_dataset ./
 
 RUN pip install --upgrade pip
 
