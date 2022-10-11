@@ -35,7 +35,7 @@ transforms = transforms.Compose(
 )
 
 # If you train on MNIST, remember to set channels_img to 1
-#dataset = datasets.MNIST(root="dataset/", train=True, transform=transforms,
+# dataset = datasets.MNIST(root="dataset/", train=True, transform=transforms,
 #                       download=True)
 
 # comment mnist above and uncomment below if train on CelebA
@@ -72,7 +72,7 @@ for epoch in range(NUM_EPOCHS):
         loss_disc_fake = criterion(disc_fake, torch.zeros_like(disc_fake))
         loss_disc = (loss_disc_real + loss_disc_fake) / 2
         disc.zero_grad()
-        loss_disc.backward()
+        loss_disc.backward(retain_graph=True)
         opt_disc.step()
 
         ### Train Generator: min log(1 - D(G(z))) <-> max log(D(G(z))
