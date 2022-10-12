@@ -12,7 +12,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
       args:
-        - user_name=palhares
+        - user_name=gan_palhares
     container_name: gan_palhares
     image: palhares/gan_palhares
     restart: unless-stopped
