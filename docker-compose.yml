@@ -1,4 +1,18 @@
 version: '3'
 services:
-  gan:
-    build: .
+  gan_palhares:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - user_name=palhares
+    container_name: gan_palhares
+    image: palhares/gan_palhares
+    restart: unless-stopped
